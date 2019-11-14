@@ -141,10 +141,10 @@ Baby.prototype.play = function(play){
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. This can be called in global scope to return window.
+  2. when a function is invoked,'this' refers to the object left of the dot.
+  3. Can use explicit bindings to state what 'this' keyword refers to in a function. call() apply() bind()
+  4. If you use the new keyword, it constructs a new object which `this` points to. It inherits the prototype of the function.
 */
 
 
