@@ -39,7 +39,32 @@ Airplane.prototype.land = function () {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-function Person() {
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.stomach = [];
+}
+Person.prototype.eat = function(someFood){
+
+
+  if(this.stomach.length < 10 ){
+    this.stomach.push(someFood);
+  }else{
+    return this.stomach;
+  }
+}
+Person.prototype.poop = function(poop){
+  if(this.stomach.length = 0) {
+    function empty(stomach){
+      stomach = []
+    }
+  
+  }
+  Person.prototype.toString = function() {
+
+    return `${this.name}  ${this.age}`;
+  }
+             
 
 }
 
@@ -57,10 +82,37 @@ function Person() {
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car() {
+function Car(model, milesPerGallon ) {
+  this.model = model;
+  this.milesPerGallon = milesPerGallon;
+  this.tank = 0;
+  this.odometer = 0;
 
 }
 
+Car.prototype.fill = function(gallons){
+ 
+  if(this.tank >= 0){
+    return this.tank += gallons;
+  }
+  
+}
+
+Car.prototype.drive = function(distance) {
+  if (distance > this.tank * this.milesPerGallon) {
+    this.odometer = this.tank * this.milesPerGallon;
+    this.tank = 0;
+    return `I ran out of fuel at ${this.odometer} miles!`;
+  }  
+  
+  if (distance < this.tank * this.milesPerGallon) {
+    this.odometer += distance;
+    this.tank = this.odometer / this.milesPerGallon;
+  }
+
+     
+  };
+  
 /*
   TASK 3
     - Write a Baby constructor subclassing Person.
@@ -68,18 +120,31 @@ function Car() {
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
+function Baby(name,age,favoriteToy) {
+  this.name = name;
+  this.age = age;
+  this.favoriteToy = favoriteToy;
 
+ 
 }
+
+Baby.prototype = Object.create(Person.prototype)
+
+
+Baby.prototype.play = function(play){
+
+  return `Playing with ${this.favoriteToy}`
+}
+
 
 /* 
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. This can be called in global scope to return window.
+  2. when a function is invoked,'this' refers to the object left of the dot.
+  3. Can use explicit bindings to state what 'this' keyword refers to in a function. call() apply() bind()
+  4. If you use the new keyword, it constructs a new object which `this` points to. It inherits the prototype of the function.
 */
 
 
